@@ -28,6 +28,7 @@ a data frame with the following columns:
 \item{significance}{p-value for the test that this alternative outperforms the next-lower alternative}
 \item{order}{order, by highest success proportion}
 \item{best}{1 if it is part of the 'highest performing group' -- those groups which were not significantly different from the best group}
+\item{p_best}{Bayesian posterior probability that this alternative is the best binomial bandit}
 }
 \author{
 Thomas Lotze <thomaslotze@thomaslotze.com>
