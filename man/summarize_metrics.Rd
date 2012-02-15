@@ -29,7 +29,8 @@ a data frame with the following columns:
 \author{
 Thomas Lotze <thomaslotze@thomaslotze.com>
 }
-
 \examples{
+metric_list = list(rbinom(n=100,size=1,prob=0.5), rbinom(n=100,size=1,prob=0.7))
+summarize_metrics(metric_list)
 }
 \keyword{ htest }

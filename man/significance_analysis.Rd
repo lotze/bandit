@@ -1,6 +1,5 @@
 \name{significance_analysis}
 \alias{significance_analysis}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 significance_analysis
 }

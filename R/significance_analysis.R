@@ -14,6 +14,8 @@ function(x, n) {
 	upper = rep(NA, num_groups)
 	significance = rep(NA, num_groups)	
 	best = rep(0, num_groups)
+	
+	b = best_binomial_bandit(x, n)
 
 	if (pt$p.value < 0.05) {
 		is_best = 1
@@ -32,5 +34,5 @@ function(x, n) {
 		}
 	}
 	
-	return(data.frame(successes=x, totals=n, estimated_proportion=p, lower=lower, upper=upper, significance=significance, rank=my_rank, best=best))
+	return(data.frame(successes=x, totals=n, estimated_proportion=p, lower=lower, upper=upper, significance=significance, rank=my_rank, best=best, p_best=b))
 }

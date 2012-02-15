@@ -1,5 +1,5 @@
 summarize_metrics <- 
-function(metric_list, data_is_binary) {
+function(metric_list, data_is_binary=TRUE) {
 	medians = sapply(metric_list, median)
 	means = sapply(metric_list, mean)
 	num_alternatives = length(metric_list)
