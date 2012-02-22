@@ -12,8 +12,8 @@ A set of functions (intended to be used by the ruby gem metricizer) for doing ba
 \tabular{ll}{
 Package: \tab bandit\cr
 Type: \tab Package\cr
-Version: \tab 0.1\cr
-Date: \tab 2012-02-13\cr
+Version: \tab 0.1.1\cr
+Date: \tab 2012-02-20\cr
 License: \tab GPL-3\cr
 }
 }

@@ -10,7 +10,7 @@ function(metric_list, data_is_binary=TRUE) {
 		lowers = cis[1,]
 		uppers = cis[2,]
 	} else {
-		cis = sapply(metric_list, function(d) {wilcox.test(d, conf.int=TRUE)$conf.int})
+		cis = sapply(metric_list, function(x) {as.vector(quantile(x,c(0.05,0.95)))})
 		lowers = cis[1,]
 		uppers = cis[2,]
 	}
