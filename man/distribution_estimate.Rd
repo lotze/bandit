@@ -8,7 +8,7 @@ summarize_metrics
 A convenience function to perform overall metric analysis: mean, median, CI.
 }
 \usage{
-distribution_estimate(v, data_is_binary=TRUE)
+distribution_estimate(v, data_is_binary=TRUE, num_quantiles=101)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -18,6 +18,9 @@ a vector of values to be analyzed
   \item{data_is_binary}{
 whether or not this is binary data
 }
+  \item{num_quantiles}{
+number of quantiles to split into
+}
 }
 \value{
 a data frame with the following columns:
@@ -25,6 +28,8 @@ a data frame with the following columns:
 \item{x}{x values for plotting a lineplot of the estimated distribution}
 \item{y}{y values for plotting a lineplot of the estimated distribution}
 \item{mids}{mid values for plotting a barplot of the estimated distribution}
+\item{lefts}{left values for plotting a barplot of the estimated distribution}
+\item{rights}{right values for plotting a barplot of the estimated distribution}
 \item{widths}{width values for plotting a barplot of the estimated distribution}
 \item{heights}{height values for plotting a barplot of the estimated distribution}
 }
