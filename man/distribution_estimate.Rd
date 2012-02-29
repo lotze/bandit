@@ -8,25 +8,31 @@ summarize_metrics
 A convenience function to perform overall metric analysis: mean, median, CI.
 }
 \usage{
-distribution_estimate(metric_list, data_is_binary=TRUE)
+distribution_estimate(v, data_is_binary=TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{metric_list}{
-a list of metric values, one for each assignment to be analyzed
+  \item{v}{
+a vector of values to be analyzed
 }
   \item{data_is_binary}{
 whether or not this is binary data
 }
 }
 \value{
-a matrix with a row for each metric in the metric list, giving the estimated cumulative distribution for the parameter of interest (a Beta-binomial estimate of p for binomial data, an empirical quantile distribution for real-valued numbers)
+a data frame with the following columns:
+\item{quantiles}{the estimated quantiles for 0,0.01,0.02,...,1, using a Beta-binomial estimate of p for binomial data, an empirical quantile distribution for real-valued numbers}
+\item{x}{x values for plotting a lineplot of the estimated distribution}
+\item{y}{y values for plotting a lineplot of the estimated distribution}
+\item{mids}{mid values for plotting a barplot of the estimated distribution}
+\item{widths}{width values for plotting a barplot of the estimated distribution}
+\item{heights}{height values for plotting a barplot of the estimated distribution}
 }
 \author{
 Thomas Lotze <thomaslotze@thomaslotze.com>
 }
 \examples{
 metric_list = list(rbinom(n=100,size=1,prob=0.5), rbinom(n=100,size=1,prob=0.7))
-distribution_estimate(metric_list)
+sapply(metric_list,distribution_estimate)
 }
 \keyword{ htest }

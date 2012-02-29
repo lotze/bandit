@@ -1,12 +1,25 @@
 distribution_estimate <- 
-function(metric_list, data_is_binary=TRUE) {
+function(v, data_is_binary=TRUE) {
 	p_to_examine = seq(0,1,by=0.01)
 	if (data_is_binary) {
-		sums = sapply(metric_list, function(v) {sum(c(v,0))})
-		totals = sapply(metric_list, function(v) {if (length(v)  > 0) {length(v)} else {0}})
-		retval = sapply(1:length(metric_list), function(i) {qbeta(p_to_examine,sums[i]+1,totals[i]-sums[i]+1)})
+		sums = sum(c(v,0))
+		totals = if (length(v)  > 0) {length(v)} else {0}
+		quantiles = qbeta(p_to_examine,sums+1,totals-sums+1)
 	} else {
-		retval = sapply(metric_list, function(x) {as.vector(quantile(x,p_to_examine))})
+		quantiles = as.vector(quantile(v,p_to_examine,type=2))
 	}
-	return(retval)
+	x = rep(quantiles,each=2)
+	mids = (quantiles[2:length(quantiles)] + quantiles[1:(length(quantiles)-1)])/2.0
+	widths = quantiles[2:length(quantiles)] - quantiles[1:(length(quantiles)-1)]
+	heights = 0.01/widths
+	y = c(0,rep(heights,each=2),0)
+	
+	x=x[is.finite(y)]
+	y=y[is.finite(y)]
+	
+	mids=mids[is.finite(heights)]
+	widths=widths[is.finite(heights)]
+	heights=heights[is.finite(heights)]
+	
+	return(list(quantiles=quantiles,x=x,y=y,mids=mids,heights=heights,widths=widths))
 }
