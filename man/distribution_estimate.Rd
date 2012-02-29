@@ -32,6 +32,7 @@ a data frame with the following columns:
 \item{rights}{right values for plotting a barplot of the estimated distribution}
 \item{widths}{width values for plotting a barplot of the estimated distribution}
 \item{heights}{height values for plotting a barplot of the estimated distribution}
+\item{probabilities}{probabilities indicating how much probability is contained in each barplot}
 }
 \author{
 Thomas Lotze <thomaslotze@thomaslotze.com>

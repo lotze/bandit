@@ -19,7 +19,15 @@ function(v, data_is_binary=TRUE, num_quantiles=101) {
 	
 	mids=mids[is.finite(heights)]
 	widths=widths[is.finite(heights)]
+	lefts = quantiles[1:(num_quantiles-1)]
+	lefts=lefts[is.finite(heights)]
+	rights=quantiles[2:num_quantiles]
+	rights=rights[is.finite(heights)]
+	probabilities = cumsum(rep(p_to_examine[2],num_quantiles-1))
+	probabilities = probabilities[is.finite(heights)]
+	probabilities = probabilities - c(0,probabilities[1:(length(probabilities)-1)])
 	heights=heights[is.finite(heights)]
+	heights = heights * (probabilities/p_to_examine[2])
 	
-	return(list(quantiles=quantiles,x=x,y=y,lefts=quantiles[1:(num_quantiles-1)],mids=mids,rights=quantiles[2:num_quantiles],heights=heights,widths=widths))
+	return(list(quantiles=quantiles,x=x,y=y,lefts=lefts,mids=mids,rights=rights,heights=heights,widths=widths,probabilities=probabilities))
 }
