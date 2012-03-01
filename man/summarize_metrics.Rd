@@ -25,6 +25,8 @@ a data frame with the following columns:
 \item{median}{median}
 \item{lower}{0.95 confidence interval on this metric}
 \item{upper}{0.95 confidence interval on this metric}
+\item{num_obs}{number of observations of this metric}
+\item{total}{the sum of all values of this metric (mean*num_obs)}
 }
 \author{
 Thomas Lotze <thomaslotze@thomaslotze.com>
