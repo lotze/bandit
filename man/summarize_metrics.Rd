@@ -23,8 +23,8 @@ whether or not this is binary data
 a data frame with the following columns:
 \item{mean}{mean}
 \item{median}{median}
-\item{lower}{0.95 confidence interval on this metric}
-\item{upper}{0.95 confidence interval on this metric}
+\item{lower}{0.95 confidence interval on the mean}
+\item{upper}{0.95 confidence interval on the mean}
 \item{num_obs}{number of observations of this metric}
 \item{total}{the sum of all values of this metric (mean*num_obs)}
 }
@@ -32,7 +32,9 @@ a data frame with the following columns:
 Thomas Lotze <thomaslotze@thomaslotze.com>
 }
 \examples{
-metric_list = list(rbinom(n=100,size=1,prob=0.5), rbinom(n=100,size=1,prob=0.7))
-summarize_metrics(metric_list)
+metric_list = list(rbinom(n=100,size=1,prob=0.5), rbinom(n=100,size=1,prob=0.7), rpois(n=100, lambda=5))
+summarize_metrics(list(metric_list[[1]]))
+summarize_metrics(list(metric_list[[2]]))
+summarize_metrics(list(metric_list[[3]]), FALSE)
 }
 \keyword{ htest }

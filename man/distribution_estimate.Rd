@@ -24,7 +24,7 @@ number of quantiles to split into
 }
 \value{
 a data frame with the following columns:
-\item{quantiles}{the estimated quantiles for 0,0.01,0.02,...,1, using a Beta-binomial estimate of p for binomial data, an empirical quantile distribution for real-valued numbers}
+\item{quantiles}{the estimated quantiles (0,0.01,0.02,...,1) for the mean, using a Beta-binomial estimate of p for binomial data, a bootstrapped quantile distribution for real-valued numbers}
 \item{x}{x values for plotting a lineplot of the estimated distribution}
 \item{y}{y values for plotting a lineplot of the estimated distribution}
 \item{mids}{mid values for plotting a barplot of the estimated distribution}
@@ -38,7 +38,9 @@ a data frame with the following columns:
 Thomas Lotze <thomaslotze@thomaslotze.com>
 }
 \examples{
-metric_list = list(rbinom(n=100,size=1,prob=0.5), rbinom(n=100,size=1,prob=0.7))
-sapply(metric_list,distribution_estimate)
+metric_list = list(rbinom(n=100,size=1,prob=0.5), rbinom(n=100,size=1,prob=0.7), rpois(n=100, lambda=5))
+distribution_estimate(metric_list[[1]])
+distribution_estimate(metric_list[[2]])
+distribution_estimate(metric_list[[3]], FALSE)
 }
 \keyword{ htest }
