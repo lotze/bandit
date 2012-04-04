@@ -1,11 +1,10 @@
 distribution_estimate <- 
-function(v, data_is_binary=TRUE, num_quantiles=101) {
+function(v, successes=NULL, num_quantiles=101) {
 	require(boot)
 	p_to_examine = seq(0,1,length.out=num_quantiles)
-	if (data_is_binary) {
-		sums = sum(c(v,0))
-		totals = if (length(v)  > 0) {length(v)} else {0}
-		quantiles = qbeta(p_to_examine,sums+1,totals-sums+1)
+	if (!is.null(successes)) {
+		total = v
+		quantiles = qbeta(p_to_examine,successes+1,total-successes+1)
 	} else {
 		bootstrapped_means = boot(v, function(y,i) {mean(y[i])}, 1000)
 		quantiles = as.vector(quantile(bootstrapped_means$t,p_to_examine,type=2))

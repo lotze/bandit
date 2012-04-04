@@ -8,19 +8,19 @@ summarize_metrics
 A convenience function to perform overall metric analysis: mean, median, CI.
 }
 \usage{
-summarize_metrics(metric_list, data_is_binary)
+summarize_metrics(v, successes=NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{metric_list}{
-a list of metric values, one for each assignment to be analyzed
+  \item{v}{
+a vector of values to be analyzed (for nonbinary data), or number of trials (for binary data)
 }
-  \item{data_is_binary}{
-whether or not this is binary data
+  \item{successes}{
+number of successes (for binary data)
 }
 }
 \value{
-a data frame with the following columns:
+a list with the following items:
 \item{mean}{mean}
 \item{median}{median}
 \item{lower}{0.95 confidence interval on the mean}
@@ -33,8 +33,8 @@ Thomas Lotze <thomaslotze@thomaslotze.com>
 }
 \examples{
 metric_list = list(rbinom(n=100,size=1,prob=0.5), rbinom(n=100,size=1,prob=0.7), rpois(n=100, lambda=5))
-summarize_metrics(list(metric_list[[1]]))
-summarize_metrics(list(metric_list[[2]]))
-summarize_metrics(list(metric_list[[3]]), FALSE)
+summarize_metrics(length(metric_list[[1]]), sum(metric_list[[1]]))
+summarize_metrics(length(metric_list[[2]]), sum(metric_list[[2]]))
+summarize_metrics(metric_list[[3]])
 }
 \keyword{ htest }
