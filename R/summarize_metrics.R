@@ -6,7 +6,7 @@ function(v, successes=NULL) {
 		cis = boot.ci(mean_replicates, conf=0.95, type="perc")$percent[4:5]
 		lower = cis[1]
 		upper = cis[2]
-		return(data.frame(mean=mean(v),median=median(v),lower=lower,upper=upper, num_obs=length(v), total=sum(v)))
+		return(list(mean=mean(v),median=median(v),lower=lower,upper=upper, num_obs=length(v), total=sum(v)))
 	} else {
 		cis = prop.test(successes,v)$conf.int
 		lower = cis[1]
