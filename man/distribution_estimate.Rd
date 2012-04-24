@@ -8,7 +8,7 @@ summarize_metrics
 A convenience function to perform overall metric analysis: mean, median, CI.
 }
 \usage{
-distribution_estimate(v, successes=NULL, num_quantiles=101)
+distribution_estimate(v, successes=NULL, num_quantiles=101, observed=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,6 +20,9 @@ number of successes (for binary data)
 }
   \item{num_quantiles}{
 number of quantiles to split into
+}
+  \item{observed}{
+whether to generate the observed distribution (rather than the estimated distribution of the mean); default FALSE
 }
 }
 \value{
@@ -42,5 +45,6 @@ metric_list = list(rbinom(n=100,size=1,prob=0.5), rbinom(n=100,size=1,prob=0.7),
 distribution_estimate(length(metric_list[[1]]), sum(metric_list[[1]]))
 distribution_estimate(length(metric_list[[2]]), sum(metric_list[[2]]))
 distribution_estimate(metric_list[[3]])
+distribution_estimate(metric_list[[3]], observed=TRUE)
 }
 \keyword{ htest }

@@ -1,13 +1,23 @@
 distribution_estimate <- 
-function(v, successes=NULL, num_quantiles=101) {
+function(v, successes=NULL, num_quantiles=101, observed=FALSE) {
 	require(boot)
 	p_to_examine = seq(0,1,length.out=num_quantiles)
-	if (!is.null(successes)) {
-		total = v
-		quantiles = qbeta(p_to_examine,successes+1,total-successes+1)
+	if (observed) {
+		if (!is.null(successes)) {
+			total = v
+			observed_p = successes/total
+			quantiles = sapply(p_to_examine, function(p) {as.numeric(p > observed_p)})
+		} else {
+			quantiles = as.vector(quantile(v,p_to_examine,type=2))
+		}
 	} else {
-		bootstrapped_means = boot(v, function(y,i) {mean(y[i])}, 1000)
-		quantiles = as.vector(quantile(bootstrapped_means$t,p_to_examine,type=2))
+		if (!is.null(successes)) {
+			total = v
+			quantiles = qbeta(p_to_examine,successes+1,total-successes+1)
+		} else {
+			bootstrapped_means = boot(v, function(y,i) {mean(y[i])}, 1000)
+			quantiles = as.vector(quantile(bootstrapped_means$t,p_to_examine,type=2))
+		}		
 	}
 	x = rep(quantiles,each=2)
 	mids = (quantiles[2:length(quantiles)] + quantiles[1:(length(quantiles)-1)])/2.0
