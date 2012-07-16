@@ -6,14 +6,14 @@
 Functions for simple A/B split test and multi-armed bandit analysis
 }
 \description{
-A set of functions (intended to be used by the ruby gem metricizer) for doing basic analysis of A/B split test data and recommending distribution of next probabilities.
+A set of functions (intended to be used by the ruby gem metricizer) for doing basic analysis of A/B split test data and recommending distribution of next probabilities, with some additional convenience functions for web metrics analysis.
 }
 \details{
 \tabular{ll}{
 Package: \tab bandit\cr
 Type: \tab Package\cr
-Version: \tab 0.1.9\cr
-Date: \tab 2012-04-04\cr
+Version: \tab 0.2.0\cr
+Date: \tab 2012-07-20\cr
 Depends: \tab boot\cr
 License: \tab GPL-3\cr
 }

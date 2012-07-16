@@ -1,10 +1,10 @@
 Package: bandit
 Type: Package
 Title: Functions for simple A/B split test and multi-armed bandit analysis
-Version: 0.1.9
-Date: 2012-04-04
-Depends: boot
+Version: 0.2.0
+Date: 2012-07-20
+Depends: boot, gam
 Author: Thomas Lotze
 Maintainer: Thomas Lotze <thomaslotze@thomaslotze.com>
-Description: A set of functions (intended to be used by the ruby gem metricizer) for doing basic analysis of A/B split test data.
+Description: A set of functions (intended to be used by the ruby gem metricizer) for doing basic analysis of A/B split test data and web metrics in general.
 License: GPL-3
