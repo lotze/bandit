@@ -21,5 +21,5 @@ deseasonalized_trend <- function(df, w=NULL) {
   smoothed_prediction = predict(my_gam, newdata=data.frame(timestamp=pdf$timestamp, dow=as.factor(rep("Wed",nrow(pdf)))), type="response")
 
   # should probably be looking for a p-val of 0.01 or lower
-  return(list(pval=pval, smoothed_prediction=smoothed_prediction))
+  return(list(pval=pval, smoothed_prediction=as.vector(smoothed_prediction)))
 }
