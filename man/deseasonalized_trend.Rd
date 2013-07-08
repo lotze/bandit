@@ -37,7 +37,8 @@ if (dt$pval < 0.01) {
   print("No significant time-based factor")
 }
 
-df=data.frame(timestamp = timestamps, value = sapply(timestamps, function(t) {rpois(1, lambda=t-min(timestamps))}))
+df=data.frame(timestamp = timestamps,
+              value = sapply(timestamps, function(t) {rpois(1, lambda=t-min(timestamps))}))
 dt = deseasonalized_trend(df)
 if (dt$pval < 0.01) {
   print("Significant time-based factor")

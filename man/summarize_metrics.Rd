@@ -32,7 +32,9 @@ a list with the following items:
 Thomas Lotze <thomaslotze@thomaslotze.com>
 }
 \examples{
-metric_list = list(rbinom(n=100,size=1,prob=0.5), rbinom(n=100,size=1,prob=0.7), rpois(n=100, lambda=5))
+metric_list = list(rbinom(n=100,size=1,prob=0.5),
+                   rbinom(n=100,size=1,prob=0.7),
+                   rpois(n=100, lambda=5))
 summarize_metrics(length(metric_list[[1]]), sum(metric_list[[1]]))
 summarize_metrics(length(metric_list[[2]]), sum(metric_list[[2]]))
 summarize_metrics(metric_list[[3]])

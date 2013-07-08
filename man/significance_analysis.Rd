@@ -35,15 +35,27 @@ Thomas Lotze <thomaslotze@thomaslotze.com>
 }
 \note{
 This is intended for use in A/B split testing -- so sizes of n should be roughly equal.
+Also, note that alternatives which have the same rank are grouped together for analysis with the 'next-lower' alternative, so you may want to check to see if ranks are equal.
 }
 
 \seealso{
 \code{\link{prop.test}}
 }
 \examples{
-x=c(10,20,30,50)
-n=c(100,102,120,130)
-significance_analysis(x,n)
+x = c(10,20,30,50)
+n = c(100,102,120,130)
+sa = significance_analysis(x,n)
+sa[rev(order(sa$estimated_proportion)), ]
+
+x = c(37,41,30,43,39,30,31,35,50,30)
+n = rep(50, length(x))
+sa = significance_analysis(x,n)
+sa[rev(order(sa$estimated_proportion)), ]
+
+x = c(37,41,30,43,39,30,31,37,50,30)
+n = rep(50, length(x))
+sa = significance_analysis(x,n)
+sa[rev(order(sa$estimated_proportion)), ]
 }
 \keyword{ htest }
 \keyword{ design }
