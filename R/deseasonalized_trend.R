@@ -12,11 +12,17 @@ deseasonalized_trend <- function(df, w=NULL) {
       assumed_family = "gaussian"
     }
   }
-  
+
   require('gam')
   my_gam = gam(value ~ dow + s(timestamp), family=assumed_family, data=pdf, weights=w)
-  
-  pval = summary(my_gam)$anova["s(timestamp)",4]
+
+  pval = summary(my_gam)$anova["s(timestamp)", "Pr(F)"]
+  if (length(pval) == 0) {
+    pval = summary(my_gam)$anova["s(timestamp)", "P(Chi)"]
+  }
+  if (length(pval) == 0) {
+    pval = NA
+  }
 
   smoothed_prediction = predict(my_gam, newdata=data.frame(timestamp=pdf$timestamp, dow=as.factor(rep("Wed",nrow(pdf)))), type="response")
 
