@@ -11,7 +11,8 @@
   \item{ndraws}{number of random draws from the posterior}
 }
 
-\value{value_remaining distribution; the distribution of improvement amounts that another arm might have over the current best arm}
+\value{value_remaining distribution; the distribution of improvement amounts that another arm might
+have over the current best arm}
 
 \author{Thomas Lotze and Markus Loecher}
 
@@ -26,5 +27,7 @@ hist(vr)
 best_arm = which.max(best_binomial_bandit(x, n))
 # "potential value" remaining in the experiment
 potential_value = quantile(vr, 0.95)
-paste("Were still unsure about the CvR for the best arm (arm ", best_arm, "), but whatever it is, one of the other arms might beat it by as much as ", round(potential_value*100, 4), " percent.", sep="")
+paste("Were still unsure about the CvR for the best arm (arm ", best_arm,
+	"), but whatever it is, one of the other arms might beat it by as much as ",
+	round(potential_value*100, 4), " percent.", sep="")
 }

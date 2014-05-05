@@ -3,7 +3,7 @@ Type: Package
 Title: Functions for simple A/B split test and multi-armed bandit analysis
 Version: 0.5.0
 Date: 2014-05-03
-Depends: boot, gam (>= 1.09)
+Imports: boot, gam (>= 1.09)
 Author: Thomas Lotze and Markus Loecher
 Maintainer: Thomas Lotze <thomaslotze@thomaslotze.com>
 Description: A set of functions for doing analysis of A/B split test data and web metrics in general.

@@ -17,7 +17,8 @@ best_binomial_bandit(x, n, alpha=1, beta=1)
   \item{beta}{shape parameter beta for the prior beta distribution.}
 }
 \value{
-a vector of probabilities for each arm being the best binomial bandit; this can be used for future randomized allocation
+a vector of probabilities for each arm being the best binomial bandit; this can be used for future
+randomized allocation
 }
 \author{
 Thomas Lotze <thomaslotze@thomaslotze.com> and Markus Loecher
@@ -27,14 +28,16 @@ Thomas Lotze <thomaslotze@thomaslotze.com> and Markus Loecher
 \code{\link{prop.test}}
 }
 \references{
-Steven L. Scott, A modern Bayesian look at the multi-armed bandit, Appl. Stochastic Models Bus. Ind. 2010; 26:639-658. (\url{http://www.economics.uci.edu/~ivan/asmb.874.pdf})
+Steven L. Scott, A modern Bayesian look at the multi-armed bandit, Appl. Stochastic Models Bus.
+Ind. 2010; 26:639-658. (\url{http://www.economics.uci.edu/~ivan/asmb.874.pdf})
 }
 \examples{
 x=c(10,20,30,50)
 n=c(100,102,120,130)
 arm_probabilities = best_binomial_bandit(x,n)
 print(arm_probabilities)
-paste("The best arm is likely ", which.max(arm_probabilities), ", with ", round(100*max(arm_probabilities), 2), " percent probability of being the best.", sep="")
+paste("The best arm is likely ", which.max(arm_probabilities), ", with ",
+	round(100*max(arm_probabilities), 2), " percent probability of being the best.", sep="")
 
 best_binomial_bandit(c(2,20),c(100,1000))
 

@@ -11,7 +11,7 @@
     Title: \tab Functions for simple A/B split test and multi-armed bandit analysis\cr
     Version: \tab 0.5.0\cr
     Date: \tab 2014-05-03\cr
-    Depends: \tab boot, gam (>= 1.09)\cr
+    Imports: \tab boot, gam (>= 1.09)\cr
     Author: \tab Thomas Lotze and Markus Loecher\cr
     Maintainer: \tab Thomas Lotze <thomaslotze@thomaslotze.com>\cr
     License: \tab GPL-3\cr
