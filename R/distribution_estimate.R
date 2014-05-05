@@ -1,6 +1,5 @@
-distribution_estimate <- 
+distribution_estimate <-
 function(v, successes=NULL, num_quantiles=101, observed=FALSE) {
-	require(boot)
 	p_to_examine = seq(0,1,length.out=num_quantiles)
 	if (observed) {
 		if (!is.null(successes)) {
@@ -17,17 +16,17 @@ function(v, successes=NULL, num_quantiles=101, observed=FALSE) {
 		} else {
 			bootstrapped_means = boot(v, function(y,i) {mean(y[i])}, 1000)
 			quantiles = as.vector(quantile(bootstrapped_means$t,p_to_examine,type=2))
-		}		
+		}
 	}
 	x = rep(quantiles,each=2)
 	mids = (quantiles[2:length(quantiles)] + quantiles[1:(length(quantiles)-1)])/2.0
 	widths = quantiles[2:length(quantiles)] - quantiles[1:(length(quantiles)-1)]
 	heights = 1/widths
 	y = c(0,rep(heights,each=2),0)
-	
+
 	x=x[is.finite(y)]
 	y=y[is.finite(y)]
-	
+
 	mids=mids[is.finite(heights)]
 	widths=widths[is.finite(heights)]
 	lefts = quantiles[1:(num_quantiles-1)]
@@ -39,6 +38,6 @@ function(v, successes=NULL, num_quantiles=101, observed=FALSE) {
 	probabilities = probabilities - c(0,probabilities[1:(length(probabilities)-1)])
 	heights=heights[is.finite(heights)]
 	heights = heights * (probabilities/p_to_examine[2])
-	
+
 	return(list(quantiles=quantiles,x=x,y=y,lefts=lefts,mids=mids,rights=rights,heights=heights,widths=widths,probabilities=probabilities))
 }

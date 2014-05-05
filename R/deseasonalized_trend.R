@@ -13,7 +13,6 @@ deseasonalized_trend <- function(df, w=NULL) {
     }
   }
 
-  require('gam')
   my_gam = gam(value ~ dow + s(timestamp), family=assumed_family, data=pdf, weights=w)
 
   pval = summary(my_gam)$anova["s(timestamp)", "Pr(F)"]

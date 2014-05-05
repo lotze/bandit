@@ -1,7 +1,6 @@
-summarize_metrics <- 
+summarize_metrics <-
 function(v, successes=NULL) {
 	if (is.null(successes)) {
-		require(boot)
 		mean_replicates = boot(v, function(y,i) {mean(y[i])}, 1000)
 		cis = boot.ci(mean_replicates, conf=0.95, type="perc")$percent[4:5]
 		lower = cis[1]
